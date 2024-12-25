@@ -5,7 +5,7 @@
     <label>Doctor</label>
     <referenceTo>Person__c</referenceTo>
     <relationshipLabel>Medical Appointments (Doctor)</relationshipLabel>
-    <relationshipName>Medical_Appointments1</relationshipName>
+    <relationshipName>Doctor_Medical_Appointments</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackTrending>false</trackTrending>
