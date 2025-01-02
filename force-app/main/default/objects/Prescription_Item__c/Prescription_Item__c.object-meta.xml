@@ -152,15 +152,14 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
-    <label>Prescription</label>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Prescription Item</label>
     <nameField>
-        <displayFormat>P-{0000}</displayFormat>
-        <label>Prescription Name</label>
-        <type>AutoNumber</type>
+        <label>Prescription Item Name</label>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>Prescriptions</pluralLabel>
+    <pluralLabel>Prescription Items</pluralLabel>
     <searchLayouts></searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
