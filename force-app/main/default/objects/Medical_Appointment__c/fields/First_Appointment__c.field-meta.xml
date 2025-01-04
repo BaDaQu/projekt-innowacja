@@ -3,7 +3,7 @@
     <fullName>First_Appointment__c</fullName>
     <defaultValue>true</defaultValue>
     <externalId>false</externalId>
-    <label>First Appointment</label>
+    <label>First Appointment Internist</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>
