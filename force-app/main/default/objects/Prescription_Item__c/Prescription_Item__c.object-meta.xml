@@ -152,14 +152,14 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
-    <label>Person</label>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Prescription Item</label>
     <nameField>
-        <label>Name</label>
+        <label>Prescription Item Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Persons</pluralLabel>
+    <pluralLabel>Prescription Items</pluralLabel>
     <searchLayouts></searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
