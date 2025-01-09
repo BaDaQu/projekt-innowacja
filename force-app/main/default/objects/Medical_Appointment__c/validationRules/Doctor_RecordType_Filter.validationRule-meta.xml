@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Doctor_RecordType_Filter</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+   NOT(ISBLANK(Doctor__c)),
+   Doctor__r.RecordType.Name &lt;&gt; &quot;Doctor&quot;
+)</errorConditionFormula>
+    <errorDisplayField>Doctor__c</errorDisplayField>
+    <errorMessage>Wybierz lekarza z record type &apos;Doctor&apos;</errorMessage>
+</ValidationRule>
