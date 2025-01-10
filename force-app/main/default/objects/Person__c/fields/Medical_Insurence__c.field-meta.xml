@@ -5,8 +5,8 @@
     <externalId>false</externalId>
     <label>Medical Insurence</label>
     <referenceTo>Medical_Insurence__c</referenceTo>
-    <relationshipLabel>Medical Appointments</relationshipLabel>
-    <relationshipName>Medical_Appointments</relationshipName>
+    <relationshipLabel>Persons</relationshipLabel>
+    <relationshipName>Persons</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
