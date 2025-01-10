@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Start_Date_of_Insurance__c</fullName>
+    <fullName>Appointment_Time__c</fullName>
     <externalId>false</externalId>
-    <label>Start Date of Insurance</label>
-    <required>false</required>
+    <label>Appointment Time</label>
+    <required>true</required>
     <trackTrending>false</trackTrending>
-    <type>Date</type>
+    <type>DateTime</type>
 </CustomField>
