@@ -1,0 +1,49 @@
+name: Salesforce Deploy after Merge
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'force-app/**'
+
+jobs:
+  deploy_to_salesforce:
+    name: Deploy to Salesforce
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up SFDX CLI
+        uses: dx-cli/sfdx-action@v1
+
+      - name: Authenticate with Salesforce Org
+        env:
+          SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
+        run: sfdx auth:sfdxurl:store --sfdxurlfile ./authfile --setalias INTA --setdefaultusername
+
+      - name: Deploy manifest to Salesforce Org
+        env:
+          SFDX_USE_PROGRESS_BAR: false
+        run: sfdx force:source:deploy --manifest manifest/package.xml --targetusername INTA --verbose
+
+      - name: Notify manifest result
+        if: failure()
+        run: echo "Manifest deployment failed. Please check logs for details."
+
+      - name: Manifest deployment Success
+        if: success()
+        run: echo "Manifest deployment successful!"
+        
+      - name: Deploy entire branch to Salesforce Org
+        run: sfdx force:source:deploy -p force-app
+
+      - name: Notify deployment result
+        if: failure()
+        run: echo "Deployment failed. Please check logs for details."
+
+      - name: Deployment Success
+        if: success()
+        run: echo "Deployment successful!"

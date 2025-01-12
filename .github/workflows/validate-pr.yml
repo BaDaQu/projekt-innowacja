@@ -1,0 +1,43 @@
+name: Salesforce DRY_RUN for Pull Request
+
+on:
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'force-app/**'
+
+jobs:
+  dry_run_deploy:
+    name: DRY_RUN Deploy to Salesforce
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up SFDX CLI
+        uses: dx-cli/sfdx-action@v1
+
+      - name: Authenticate with Salesforce Org
+        env:
+          SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
+        run: sfdx auth:sfdxurl:store --sfdxurlfile ./authfile --setalias INTA --setdefaultusername
+
+      - name: Validate manifest deployment (DRY_RUN)
+        env:
+          SFDX_USE_PROGRESS_BAR: false
+        run: sfdx force:source:deploy --checkonly --manifest manifest/package.xml --targetusername INTA --verbose
+
+      - name: Notify manifest deployment result
+        if: failure()
+        run: echo "Manifest deployment validation failed. Please check logs for details."
+
+      - name: Validate deployment (DRY_RUN)
+        env:
+          SFDX_USE_PROGRESS_BAR: false
+        run: sfdx force:source:deploy --checkonly -p -force-app --targetusername INTA --verbose
+
+      - name: Notify result
+        if: failure()
+        run: echo "Deployment validation failed. Please check logs for details."
