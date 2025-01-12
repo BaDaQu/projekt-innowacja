@@ -59,6 +59,5 @@ trigger AppointmentName on Medical_Appointment__c (before insert, before update)
             name += '[??]';
         }
         m.Medical_Appointment_Name__c = name;
-        system.debug(name);
     }
 }
