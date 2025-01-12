@@ -24,6 +24,19 @@ jobs:
           SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
         run: sfdx auth:sfdxurl:store --sfdxurlfile ./authfile --setalias INTA --setdefaultusername
 
+      - name: Deploy admin profile to Salesforce Org (DRY_RUN)
+        env:
+          SFDX_USE_PROGRESS_BAR: false
+        run: sfdx force:source:deploy --checkonly --sourcepath force-app/main/default/profiles/Admin.profile-meta.xml --targetusername INTA --verbose
+
+      - name: Notify admin profile result
+        if: failure()
+        run: echo "Admin profile deployment failed. Please check logs for details."
+
+      - name: Admin profile deployment Success
+        if: success()
+        run: echo "Admin profile deployment successful!"
+
       - name: Validate manifest deployment (DRY_RUN)
         env:
           SFDX_USE_PROGRESS_BAR: false
