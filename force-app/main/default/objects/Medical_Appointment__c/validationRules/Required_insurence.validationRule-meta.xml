@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Required_insurence</fullName>
-    <active>true</active>
-    <errorConditionFormula>TODAY() &gt;  Medical_Insurence__r.End_Date_of_Insurance__c</errorConditionFormula>
-    <errorMessage>The patient&apos;s insurance has expired.</errorMessage>
-</ValidationRule>
