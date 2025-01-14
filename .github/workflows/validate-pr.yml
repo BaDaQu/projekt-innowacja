@@ -33,19 +33,6 @@ jobs:
         if: failure()
         run: echo "Admin profile deployment failed. Please check logs for details."
 
-      - name: Admin profile deployment Success
-        if: success()
-        run: echo "Admin profile deployment successful!"
-
-      - name: Validate manifest deployment (DRY_RUN)
-        env:
-          SFDX_USE_PROGRESS_BAR: false
-        run: sfdx force:source:deploy --checkonly --manifest manifest/package.xml --targetusername INTA --verbose
-
-      - name: Notify manifest deployment result
-        if: failure()
-        run: echo "Manifest deployment validation failed. Please check logs for details."
-
       - name: Validate deployment (DRY_RUN)
         env:
           SFDX_USE_PROGRESS_BAR: false
