@@ -32,10 +32,6 @@ jobs:
       - name: Notify admin profile result
         if: failure()
         run: echo "Admin profile deployment failed. Please check logs for details."
-
-      - name: Admin profile deployment Success
-        if: success()
-        run: echo "Admin profile deployment successful!"
         
       - name: Deploy entire branch to Salesforce Org
         run: sfdx force:source:deploy -p force-app
@@ -43,7 +39,3 @@ jobs:
       - name: Notify deployment result
         if: failure()
         run: echo "Deployment failed. Please check logs for details."
-
-      - name: Deployment Success
-        if: success()
-        run: echo "Deployment successful!"
