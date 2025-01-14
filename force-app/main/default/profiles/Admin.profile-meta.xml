@@ -642,6 +642,17 @@
         <layout>Order-Order Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Person__c-Person Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Person__c-Doctor Layout</layout>
+        <recordType>Person__c.Doctor</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Person__c-Patient Layout</layout>
+        <recordType>Person__c.Patient</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Product2-Product Layout</layout>
     </layoutAssignments>
     <objectPermissions>
@@ -1406,6 +1417,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>SubscribeToLightningReports</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>TerritoryOperations</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
