@@ -36,19 +36,6 @@ jobs:
       - name: Admin profile deployment Success
         if: success()
         run: echo "Admin profile deployment successful!"
-
-      - name: Deploy manifest to Salesforce Org
-        env:
-          SFDX_USE_PROGRESS_BAR: false
-        run: sfdx force:source:deploy --manifest manifest/package.xml --targetusername INTA --verbose
-
-      - name: Notify manifest result
-        if: failure()
-        run: echo "Manifest deployment failed. Please check logs for details."
-
-      - name: Manifest deployment Success
-        if: success()
-        run: echo "Manifest deployment successful!"
         
       - name: Deploy entire branch to Salesforce Org
         run: sfdx force:source:deploy -p force-app
