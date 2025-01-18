@@ -21,11 +21,11 @@
                 <field>Phone__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>FirstName__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>LastName__c</field>
             </layoutItems>
             <layoutItems>
@@ -35,6 +35,10 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Personal_ID_Number__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>External_Id__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
