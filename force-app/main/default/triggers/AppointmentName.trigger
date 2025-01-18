@@ -26,38 +26,18 @@ trigger AppointmentName on Medical_Appointment__c (before insert, before update)
     );
     for (Medical_Appointment__c m : Trigger.new) {
         String name = '';
-        if (m.Medical_Facility__c != null && facilityMap.containsKey(m.Medical_Facility__c)) {
-            if(facilityMap.get(m.Medical_Facility__c).Medical_Facility_Name__c!=null){
-            	name += '[' + facilityMap.get(m.Medical_Facility__c).Medical_Facility_Name__c + ']-';
-            }else{
-            	name += '[??]-';
-            }
-        } else {
-            name += '[??]-';
-        }
-        if (m.Doctor__c != null && doctorMap.containsKey(m.Doctor__c)) {
-            if(doctorMap.get(m.Doctor__c).LastName__c!=null){
-           		 name += '[' + doctorMap.get(m.Doctor__c).LastName__c + ']-';     
-            }else{
-                 name += '[??]-';
-            }
-        } else {
-            name += '[??]-';
-        }
-        if (m.Patient__c != null && patientMap.containsKey(m.Patient__c)) {
-            if(patientMap.get(m.Patient__c).LastName__c!=null){
-            	name += '[' + patientMap.get(m.Patient__c).LastName__c + ']-';
-            }else{
-                name += '[??]-';
-            }
-        } else {
-            name += '[??]-';
-        }
-        if (m.Appointment_Time__c != null) {
-            name += '[' + m.Appointment_Time__c.format('dd-MM-yyyy') + ']';
-        } else {
-            name += '[??]';
-        }
+        String facility=null;
+        String doc=null;
+        String patient=null;
+        if(m.Medical_Facility__c != null) facility = '[' + facilityMap.get(m.Medical_Facility__c).Medical_Facility_Name__c+']-';
+        if(m.Doctor__c!=null) 				doc = '[' + doctorMap.get(m.Doctor__c).LastName__c + ']-';
+        if(m.Patient__c!=null)			 patient = '[' + patientMap.get(m.Patient__c).LastName__c + ']-';
+        if(facility==null) facility = '[??]-';
+        if(doc==null) 		doc = '[??]-';
+        if(patient==null) patient = '[??]-';
+
+		name = facility + doc + patient;
+		name +=  '[' + m.Appointment_Time__c.format('dd-MM-yyyy') + ']';
         m.Medical_Appointment_Name__c = name;
     }
 }
