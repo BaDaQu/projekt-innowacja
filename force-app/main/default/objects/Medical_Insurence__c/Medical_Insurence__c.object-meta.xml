@@ -152,14 +152,14 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
-    <label>Medical Appointment</label>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>Medical Insurence</label>
     <nameField>
-        <label>Medical Appointment Name</label>
+        <label>Medical Insurence Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Medical Appointments</pluralLabel>
+    <pluralLabel>Medical Insurences</pluralLabel>
     <searchLayouts></searchLayouts>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
