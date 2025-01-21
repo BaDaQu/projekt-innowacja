@@ -3,7 +3,7 @@ name: Salesforce Deploy after Merge
 on:
   push:
     branches:
-      - develop
+      - Develop
     paths:
       - 'force-app/**'
 
