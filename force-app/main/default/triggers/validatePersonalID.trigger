@@ -31,7 +31,7 @@ trigger validatePersonalID on Person__c (before insert, before update)
         
         if(integer.valueOf(pesel.substring(10, 11)) != lastDigit) 
         {
-            person.addError('Checksum is incorrect!');
+            person.addError('Personal ID Number is incorrect!');
         }
 
     }
