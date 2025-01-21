@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>First_Appointment__c</fullName>
-    <defaultValue>true</defaultValue>
+    <fullName>Insurence_Required__c</fullName>
+    <defaultValue>false</defaultValue>
     <externalId>false</externalId>
-    <label>First Appointment Internist</label>
+    <label>Insurence Required</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>
