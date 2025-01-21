@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="https://soap.sforce.com/2006/04/metadata">
-    <applicationVisibilities>
+  <applicationVisibilities>
         <application>ZgeryDoc</application>
         <default>false</default>
         <visible>true</visible>
@@ -685,6 +685,9 @@
     <layoutAssignments>
         <layout>Prescription__c-Prescription Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Doctor_Facility_Association__c-Doctor Facility Association Layout</layout>
+    </layoutAssignments>
      <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
@@ -748,6 +751,15 @@
         <object>Product2</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Doctor_Facility_Association__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
     <tabVisibilities>
         <tab>standard-Account</tab>
         <visibility>DefaultOn</visibility>
@@ -794,6 +806,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Prescription__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Doctor_Facility_Association__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>
