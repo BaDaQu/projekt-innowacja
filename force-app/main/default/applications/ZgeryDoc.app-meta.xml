@@ -18,7 +18,6 @@
     <tabs>Prescription__c</tabs>
     <tabs>Person__c</tabs>
     <tabs>Prescription_Item__c</tabs>
-    <tabs>Doctor_Facility_Association__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>ZgeryDoc_UtilityBar</utilityBar>
 </CustomApplication>
