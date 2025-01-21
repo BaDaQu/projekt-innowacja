@@ -7,9 +7,9 @@
     <lookupFilter>
         <active>true</active>
         <filterItems>
-            <field>Person__c.RecordType.Id</field>
+            <field>Person__c.RecordType.Name</field>
             <operation>equals</operation>
-            <value>012KL000000XeBVYA0</value>
+            <value>&quot;Patient&quot;</value>
         </filterItems>
         <isOptional>false</isOptional>
     </lookupFilter>
