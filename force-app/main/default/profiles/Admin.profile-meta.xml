@@ -601,6 +601,36 @@
         <field>Product2.StockKeepingUnit</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Medical_Facility__c.Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Medical_Facility__c.Email__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Medical_Facility__c.Facility_GeoLocation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Medical_Facility__c.Facility_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Medical_Facility__c.Insurence_Required__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Medical_Facility__c.Medical_Facility_Name__c</field>
+       <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
@@ -619,6 +649,9 @@
     <layoutAssignments>
         <layout>Product2-Product Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Medical_Facility__c-Medical Facility Layout</layout>
+   </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
@@ -671,6 +704,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>Product2</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Medical_Facility__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <tabVisibilities>
@@ -1449,5 +1491,85 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>WorkCalibrationUser</name>
+    </userPermissions>
+        <userPermissions>
+        <enabled>true</enabled>
+        <name>ApprovalAdmin</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ApprovalDesigner</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ExternalClientAppAdmin</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ExternalClientAppDeveloper</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ExternalClientAppViewer</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>FreezeUsers</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ManageContentTaxonomy</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ManageCustomDomains</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ManageDevSandboxes</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ManageFilesAndAttachments</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ManagePersonalOrg</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ModifyAllPolicyCenterPolicies</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>MonitorLoginHistory</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>OmnichannelInventorySync</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>TerritoryOperations</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>UseOmnichannelInventoryAPIs</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ViewAllPolicyCenterPolicies</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ViewClientSecret</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ViewContentTaxonomy</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ViewPersonalOrg</name>
     </userPermissions>
 </Profile>
