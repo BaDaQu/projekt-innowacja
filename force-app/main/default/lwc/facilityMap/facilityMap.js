@@ -1,7 +1,7 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
-
-const FIELDS = ['Medical_Facility__c.Facility_GeoLocation__Latitude__s', 'Medical_Facility__c.Facility_GeoLocation__Longitude__s'];
+import facilityname from '@salesforce/schema/Medical_Facility_Name__c';
+const FIELDS = ['Medical_Facility__c.Medical_Facility_Name__c', 'Medical_Facility__c.Address__c'];
 
 export default class FacilityMap extends LightningElement {
     @api facilityId;
@@ -18,12 +18,15 @@ export default class FacilityMap extends LightningElement {
 
             this.mapMarkers = [
                 {
-                    location: { Latitude: latitude, Longitude: longitude },
-                    title: 'Medical Facility',
-                    description: 'Here is the facility location.'
+                    location: {
+                        Street: data.fields.Street,
+                        City: data.fields.City,
+                        Country: data.fields.Country,
+                },
+                    title: facilityname,
                 }
             ];
-            this.center = { Latitude: latitude, Longitude: longitude };
+            this.center = { location: { Street: data.fields.Street, City: data.fields.City, Country: data.fields.Country }, };
             this.error = undefined;
         } else if (error) {
             this.error = error;
