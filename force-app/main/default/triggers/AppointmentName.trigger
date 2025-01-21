@@ -19,7 +19,7 @@ trigger AppointmentName on Medical_Appointment__c (before insert, before update)
     );
 
     for (Medical_Appointment__c m : Trigger.new) {
-		m.Medical_Appointment_Name__c='';
+	m.Medical_Appointment_Name__c='';
         String facility='[??]-';
         if(m.Medical_Facility__c != null) {
             facility = '[' + facilityMap.get(m.Medical_Facility__c).Medical_Facility_Name__c+']-';
