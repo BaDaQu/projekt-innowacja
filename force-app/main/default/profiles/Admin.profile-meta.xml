@@ -675,9 +675,6 @@
         <layout>Medical_Facility__c-Medical Facility Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Person__c-Person Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Prescription_Item__c-Prescription Item Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
