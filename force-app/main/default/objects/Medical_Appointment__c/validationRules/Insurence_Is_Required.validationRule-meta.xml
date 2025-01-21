@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Insurence_Is_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+        Medical_Facility__r.Insurence_Required__c = True,
+OR( 
+ISNULL(Patient__r.Medical_Insurence__c),
+ISNULL(Patient__r.Medical_Insurence__r.End_Date_of_Insurance__c),
+Patient__r.Medical_Insurence__r.End_Date_of_Insurance__c &lt; 
+TODAY()
+)
+)</errorConditionFormula>
+    <errorMessage>The patient does not have insurance.</errorMessage>
+</ValidationRule>
