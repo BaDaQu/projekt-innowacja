@@ -10,6 +10,7 @@
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>ZgeryDoc</label>
     <navType>Standard</navType>
     <tabs>Medical_Appointment__c</tabs>
@@ -17,6 +18,7 @@
     <tabs>Medical_Insurence__c</tabs>
     <tabs>Prescription__c</tabs>
     <tabs>Person__c</tabs>
+    <tabs>Prescription_Item__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>ZgeryDoc_UtilityBar</utilityBar>
 </CustomApplication>
