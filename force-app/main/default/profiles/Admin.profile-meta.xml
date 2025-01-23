@@ -34,6 +34,46 @@
         <apexClass>TestDoctorWorkSchedulesAPI</apexClass>
         <enabled>true</enabled>
    	</classAccesses>
+    <classAccesses>
+        <apexClass>AppointmentNameClass</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AppointmentNameTriggerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>FirstAppointmentInternistClass</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>FirstAppointmentInternisttest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MedicalAppointmentHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MedicalAppointmentTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>    
+    <classAccesses>
+        <apexClass>NotifyAdmins</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PersonNameClass</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PersonTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ValidatePersonalIdClass</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Person__c.Email__c</field>
