@@ -666,11 +666,34 @@
         <field>Medical_Facility__c.Medical_Facility_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
- <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Medical_Facility__c.Phone__c</field>
         <readable>true</readable>
     </fieldPermissions>
+       <fieldPermissions>
+        <editable>true</editable>
+        <field>Facility_Hours__c.Additional_Information__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Facility_Hours__c.Closing_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Facility_Hours__c.Is_Open__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Facility_Hours__c.Opening_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <layoutAssignments>
+        <layout>Facility_Hours__c-Facility Hours Layout</layout>
+    </layoutAssignments>
     <layoutAssignments>
         <layout>Medical_Insurence__c-Medical Insurence Layout</layout>
     </layoutAssignments>
@@ -799,6 +822,15 @@
         <object>Medical_Facility__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+     <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Facility_Hours__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
     <tabVisibilities>
         <tab>standard-Account</tab>
         <visibility>DefaultOn</visibility>
@@ -849,6 +881,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Doctor_Facility_Association__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Facility_Hours__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>
