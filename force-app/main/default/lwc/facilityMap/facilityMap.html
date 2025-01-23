@@ -1,9 +1,12 @@
 <template>
-    <lightning-card title="Facility Location" icon-name="standard:location">
+    <template if:true={mapMarkers}>
         <lightning-map
             map-markers={mapMarkers}
-            center={mapCenter}
+            center={center}
             zoom-level="14">
         </lightning-map>
-    </lightning-card>
+    </template>
+    <template if:true={error}>
+        <p>Error: {error}</p>
+    </template>
 </template>
