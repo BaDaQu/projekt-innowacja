@@ -7,6 +7,10 @@
         <label>Information</label>
         <layoutColumns>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Name</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Required</behavior>
                 <field>Prescription__c</field>
             </layoutItems>
@@ -17,10 +21,6 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Medicine_Id__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Name</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -54,11 +54,6 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <miniLayout>
-        <fields>Prescription__c</fields>
-        <fields>Count__c</fields>
-        <fields>Medicine_Id__c</fields>
-    </miniLayout>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
