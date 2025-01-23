@@ -718,9 +718,6 @@
     <layoutAssignments>
         <layout>Doctor_Facility_Association__c-Doctor Facility Association Layout</layout>
     </layoutAssignments>
-       <layoutAssignments>
-        <layout>Medical_Facility__c-Medical Facility Layout</layout>
-    </layoutAssignments>
      <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
