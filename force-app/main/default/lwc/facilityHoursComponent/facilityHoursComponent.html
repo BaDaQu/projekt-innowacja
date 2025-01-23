@@ -1,0 +1,56 @@
+<template>
+    <template if:true={facilityHoursData}>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Dzień Tygodnia">Dzień Tygodnia</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Godzina Otwarcia">Godzina Otwarcia</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Godzina Zamknięcia">Godzina Zamknięcia</div>
+                    </th>
+                     <th class="" scope="col">
+                         <div class="slds-truncate" title="Czy Otwarte">Czy Otwarte</div>
+                     </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Dodatkowe Informacje">Dodatkowe Informacje</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={facilityHoursData} for:item="hour">
+                    <tr key={hour.Id} class="slds-hint-parent">
+                        <th scope="row">
+                            <div class="slds-truncate" title={hour.Day_of_Week__c}>{hour.Day_of_Week__c}</div>
+                        </th>
+                        <td>
+                            <div class="slds-truncate" title={hour.Opening_Time__c}>{hour.Opening_Time__c}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title={hour.Closing_Time__c}>{hour.Closing_Time__c}</div>
+                        </td>
+                         <td>
+                             <div class="slds-truncate" title={hour.Is_Open__c}>
+                                 <template if:true={hour.Is_Open__c}>
+                                     <lightning-icon icon-name="utility:check" size="small" alternative-text="Otwarte"></lightning-icon>
+                                 </template>
+                                 <template if:false={hour.Is_Open__c}>
+                                     <lightning-icon icon-name="utility:close" size="small" alternative-text="Zamknięte"></lightning-icon>
+                                 </template>
+                             </div>
+                         </td>
+                        <td>
+                            <div class="slds-truncate" title={hour.Additional_Information__c}>{hour.Additional_Information__c}</div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+       </template>
+       <template if:false={facilityHoursData}>
+            <p>Brak godzin otwarcia dla tej placówki</p>
+       </template>
+</template>
