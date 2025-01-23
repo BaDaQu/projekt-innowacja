@@ -1,6 +1,6 @@
 public class MedicalAppointmentHandler {
 
-    public static void handleAfterInsertAndUpdate(List<Medical_Appointment__c> newAppointments) {
+    public static void handleAppointments(List<Medical_Appointment__c> newAppointments) {
         List<String> emailAddresses = new List<String>();
         Map<Id, String> patientEmailMap = new Map<Id, String>();
         Map<Id, Medical_Appointment__c> appointmentDetailsMap = new Map<Id, Medical_Appointment__c>();
