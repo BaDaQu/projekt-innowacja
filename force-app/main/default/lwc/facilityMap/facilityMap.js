@@ -1,6 +1,5 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
-import facilityname from '@salesforce/schema/Medical_Facility_Name__c';
 const FIELDS = ['Medical_Facility__c.Medical_Facility_Name__c', 'Medical_Facility__c.Address__c'];
 
 export default class FacilityMap extends LightningElement {
@@ -16,11 +15,11 @@ export default class FacilityMap extends LightningElement {
             this.mapMarkers = [
                 {
                     location: {
-                        Street: data.fields.Street,
-                        City: data.fields.City,
-                        Country: data.fields.Country,
+                        Street: data.fields.Street.value,
+                        City: data.fields.City.value,
+                        Country: data.fields.Country.value,
                 },
-                    title: facilityname,
+                    title: data.fields.Medical_Facility_Name__c.value,
                 }
             ];
             this.center = { location: { Street: data.fields.Street, City: data.fields.City, Country: data.fields.Country }, };
