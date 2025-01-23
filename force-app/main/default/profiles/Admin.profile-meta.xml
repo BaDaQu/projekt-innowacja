@@ -26,6 +26,14 @@
         <apexClass>testValidatePersonalID</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>DoctorWorkSchedulesAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TestDoctorWorkSchedulesAPI</apexClass>
+        <enabled>true</enabled>
+   	</classAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Person__c.Email__c</field>
@@ -54,6 +62,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Person__c.Specialization__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Person__c.Doctor_Work_Schedule__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Person__c.External_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
