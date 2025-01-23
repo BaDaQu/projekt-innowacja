@@ -42,10 +42,6 @@
                 <behavior>Edit</behavior>
                 <field>Insurence_Required__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Facility_GeoLocation__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
