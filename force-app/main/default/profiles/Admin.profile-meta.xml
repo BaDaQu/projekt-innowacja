@@ -22,9 +22,10 @@
         <apexClass>TestMedicalFacilitiesAPI</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-        <classAccesses>
+    <classAccesses>
         <apexClass>testValidatePersonalID</apexClass>
         <enabled>true</enabled>
+    </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Person__c.Email__c</field>
