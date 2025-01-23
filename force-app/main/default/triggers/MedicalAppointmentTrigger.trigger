@@ -1,4 +1,4 @@
-trigger MedicalAppointmentTrigger on Medical_Appointment__c (before insert, before update) 
+trigger MedicalAppointmentTrigger on Medical_Appointment__c (before insert, before update, after update, after insert) 
 {
     MedicalAppointmentTriggerHandler handler = new MedicalAppointmentTriggerHandler();
     

@@ -43,7 +43,8 @@ public class MedicalAppointmentTriggerHandler
 
     private Boolean checkRecord(Medical_Appointment__c oldAppointment, Medical_Appointment__c newAppointment)
     {
-        if(oldAppointment.Name != newAppointment.Name)
+        if(oldAppointment.Name != newAppointment.Name ||
+           oldAppointment.Appointment_Time__c != newAppointment.Appointment_Time__c)
         {
             return true;
         }
