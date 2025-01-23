@@ -156,7 +156,7 @@
     <label>Doctor Facility Association</label>
     <nameField>
         <label>Doctor Facility Association Name</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Doctor Facility Associations</pluralLabel>
     <searchLayouts></searchLayouts>

@@ -79,8 +79,8 @@
         <style>CustomLinks</style>
     </layoutSections>
     <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Medical_Appointment__c.Patient__c</relatedList>
+        <fields>Medical_Facility__c.NAME</fields>
+        <relatedList>Doctor_Facility_Association__c.Doctor__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -92,7 +92,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hKK000000sABb</masterLabel>
+        <masterLabel>00hKL000000q5F0</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
