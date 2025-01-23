@@ -37,6 +37,7 @@ export default class FacilityMap extends LightningElement {
             };
             this.error = undefined;
         } else if (error) {
+            console.log('!!!!!!!!!!!!!!!!!!!!!!', error)
             this.error = error;
             this.mapMarkers = [];
             this.center = {};
