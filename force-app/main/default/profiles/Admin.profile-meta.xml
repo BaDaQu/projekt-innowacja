@@ -761,9 +761,6 @@
     <layoutAssignments>
         <layout>Doctor_Facility_Association__c-Doctor Facility Association Layout</layout>
     </layoutAssignments>
-     <layoutAssignments>
-        <layout>Medical_Appointment__c-Medical Appointment Layout</layout>
-    </layoutAssignments>
     <layoutAssignments>
     	<layout>Medical_Appointment__c-Medical Appointment Layout</layout>
         <recordType>Medical_Appointment__c.On_Site</recordType>
