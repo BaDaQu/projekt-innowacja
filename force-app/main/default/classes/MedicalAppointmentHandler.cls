@@ -1,45 +1,77 @@
 public class MedicalAppointmentHandler {
 
-    public static void handleAppointments(List<Medical_Appointment__c> appointments) {
+    public static void handleAfterInsertAndUpdate(List<Medical_Appointment__c> newAppointments) {
+        List<String> emailAddresses = new List<String>();
+        Map<Id, String> patientEmailMap = new Map<Id, String>();
+        Map<Id, Medical_Appointment__c> appointmentDetailsMap = new Map<Id, Medical_Appointment__c>();
         Set<Id> patientIds = new Set<Id>();
-        for (Medical_Appointment__c appointment : appointments) {
+
+        // Zbierz ID pacjentów
+        for (Medical_Appointment__c appointment : newAppointments) {
             if (appointment.Patient__c != null) {
                 patientIds.add(appointment.Patient__c);
+                appointmentDetailsMap.put(appointment.Id, appointment);
             }
         }
-    
-        // Bulk SOQL Query: Retrieve all Person__c records at once.
-        Map<Id, Person__c> patientMap = new Map<Id, Person__c>([SELECT Id, Email__c FROM Person__c WHERE Id IN :patientIds]);
-    
-        List<Messaging.SingleEmailMessage> emailsToSend = new List<Messaging.SingleEmailMessage>();
-    
-        for (Medical_Appointment__c appointment : appointments) {
-            if (appointment.Patient__c != null && patientMap.containsKey(appointment.Patient__c)) {
-                Person__c patient = patientMap.get(appointment.Patient__c);
-    
-                String subject = 'Zmiana w Twojej wizycie lekarskiej';
-                String body = 'Twoja wizyta lekarska została utworzona lub zmieniona:\n\n';
-                body += 'Nazwa wizyty: ' + appointment.Name + '\n';
-                body += 'Data i godzina: ' + appointment.Appointment_Time__c + '\n\n';
-                body += 'Prosimy o kontakt z placówką w celu potwierdzenia szczegółów.';
-    
-                Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-                mail.setToAddresses(new List<String>{patient.Email__c});
-                mail.setSubject(subject);
-                mail.setPlainTextBody(body);
-                emailsToSend.add(mail);
-    
-    
-            } else {
-                System.debug('Patient not found for Appointment: ' + appointment.Id);
+
+        // Bulkify zapytanie SOQL
+        if (!patientIds.isEmpty()) {
+            for (Person__c patient : [SELECT Id, Email__c FROM Person__c WHERE Id IN :patientIds]) {
+                patientEmailMap.put(patient.Id, patient.Email__c);
+            }
+
+            for (Id appointmentId : appointmentDetailsMap.keySet()) {
+                Medical_Appointment__c appointment = appointmentDetailsMap.get(appointmentId);
+                if (patientEmailMap.containsKey(appointment.Patient__c)) {
+                    emailAddresses.add(patientEmailMap.get(appointment.Patient__c));
+                }
             }
         }
-    
-        try{
+
+        if (!emailAddresses.isEmpty()) {
+            List<Messaging.SingleEmailMessage> emailsToSend = createEmailMessages(appointmentDetailsMap, patientEmailMap);
             Messaging.sendEmail(emailsToSend);
-        } catch(Exception e){
-            System.debug('Error sending email: ' + e.getMessage());
-            //Handle Email sending error appropriately, consider a retry mechanism.
         }
-	}
+    }
+
+    private static List<Messaging.SingleEmailMessage> createEmailMessages(Map<Id, Medical_Appointment__c> appointmentDetailsMap, Map<Id, String> patientEmailMap) {
+        List<Messaging.SingleEmailMessage> emailsToSend = new List<Messaging.SingleEmailMessage>();
+
+        for (Id appointmentId : appointmentDetailsMap.keySet()) {
+            Medical_Appointment__c appointment = appointmentDetailsMap.get(appointmentId);
+
+            String subject = 'Zmiana w Twojej wizycie lekarskiej';
+            String body = 'Twoja wizyta lekarska została utworzona lub zmieniona:\n\n';
+            body += 'Nazwa wizyty: ';
+
+            if (appointment.Name != null) {
+                body += appointment.Name + '\n';
+            } else {
+                body += 'Brak nazwy\n';
+            }
+
+            body += 'Data i godzina: ';
+            if (appointment.Appointment_Time__c != null) {
+                body += appointment.Appointment_Time__c + '\n\n';
+            } else {
+                body += 'Brak daty i godziny\n\n';
+            }
+
+            body += 'Prosimy o kontakt z placówką w celu potwierdzenia szczegółów.';
+
+            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+            if (appointment.Patient__c != null && patientEmailMap.containsKey(appointment.Patient__c)) {
+                mail.setToAddresses(new List<String>{patientEmailMap.get(appointment.Patient__c)});
+            } else {
+                // Opcjonalnie: Dodaj logowanie lub obsłuż ten przypadek.
+                System.debug('Brak adresu email dla pacjenta o ID: ' + appointment.Patient__c);
+                continue; // Przejdź do kolejnej wizyty
+            }
+            mail.setSubject(subject);
+            mail.setPlainTextBody(body);
+            emailsToSend.add(mail);
+        }
+
+        return emailsToSend;
+    }
 }
