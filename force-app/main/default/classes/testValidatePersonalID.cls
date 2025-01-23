@@ -7,6 +7,8 @@ private class testValidatePersonalID
         
         Person__c person = new Person__c
         (
+            FirstName__c = 'Oleg',
+            LastName__c = 'Kolanko',
         	Personal_ID_Number__c = '44051401359'        
         );
         
@@ -27,6 +29,8 @@ private class testValidatePersonalID
     {
         Person__c person = new Person__c
         (
+			FirstName__c = 'Oleg',
+            LastName__c = 'Kolanko',
         	Personal_ID_Number__c = '4405140135'        
         );
         
@@ -49,6 +53,8 @@ private class testValidatePersonalID
        
         Person__c person = new Person__c
         (
+			FirstName__c = 'Oleg',
+            LastName__c = 'Kolanko',
         	Personal_ID_Number__c = '44051401350'        
         );
 
@@ -59,7 +65,7 @@ private class testValidatePersonalID
         } 
         catch (DmlException e) 
         {
-            System.assert(e.getMessage().contains('Last digit of Personal ID Number is wrong!'), 
+            System.assert(e.getMessage().contains('Personal ID Number is incorrect!'), 
                           'Expected validation error for invalid last digit of Personal ID Number!');
         }
     }
