@@ -12,6 +12,7 @@ export default class FacilityMap extends LightningElement {
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
     loadFacilityLocation({ error, data }) {
         if (data) {
+            console.log('dzialam !!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             const address = data.fields.Address__c.value;
             const facilityName = data.fields.Medical_Facility_Name__c.value;
             this.mapMarkers = [
@@ -37,7 +38,7 @@ export default class FacilityMap extends LightningElement {
             };
             this.error = undefined;
         } else if (error) {
-            console.log('!!!!!!!!!!!!!!!!!!!!!!', error)
+            console.log('!!!!!!!nie dzialam!!!!!!!!!!!!!!!', error)
             this.error = error;
             this.mapMarkers = [];
             this.center = {};
