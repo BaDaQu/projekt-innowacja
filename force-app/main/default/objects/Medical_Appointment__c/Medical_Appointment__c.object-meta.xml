@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Medical_Appointment_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -155,8 +158,9 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Medical Appointment</label>
     <nameField>
+        <displayFormat>A-{0000}</displayFormat>
         <label>Medical Appointment Name</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Medical Appointments</pluralLabel>
     <searchLayouts></searchLayouts>
