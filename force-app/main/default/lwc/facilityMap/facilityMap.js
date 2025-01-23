@@ -13,6 +13,7 @@ export default class FacilityMap extends LightningElement {
     loadFacilityLocation({ error, data }) {
         if (data) {
             console.log('dzialam !!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            console.log('dzialam !!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             const address = data.fields.Address__c.value;
             const facilityName = data.fields.Medical_Facility_Name__c.value;
             this.mapMarkers = [
