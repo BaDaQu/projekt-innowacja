@@ -6,6 +6,25 @@
         <visible>true</visible>
     </applicationVisibilities>
     <custom>false</custom>
+    <classAccesses>
+        <apexClass>MedicalFacilitiesAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>RestHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>RestHelperTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TestMedicalFacilitiesAPI</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+        <classAccesses>
+        <apexClass>testValidatePersonalID</apexClass>
+        <enabled>true</enabled>
     <fieldPermissions>
         <editable>true</editable>
         <field>Person__c.Email__c</field>
@@ -669,6 +688,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Medical_Facility__c.Phone__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+        <fieldPermissions>
+        <editable>true</editable>
+        <field>Medical_Facility__c.External_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+        <fieldPermissions>
+        <editable>true</editable>
+        <field>Medical_Facility__c.Opening_Hours__c</field>
         <readable>true</readable>
     </fieldPermissions>
        <fieldPermissions>
