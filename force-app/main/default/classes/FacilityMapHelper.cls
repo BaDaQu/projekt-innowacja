@@ -1,38 +1,23 @@
 public class FacilityMapHelper {
     @AuraEnabled(cacheable=true)
-    public static string getStreets(string name){
-        system.debug('street   '+name);
+    public static string getStreet(Id facID){
         Medical_Facility__c mf = new Medical_Facility__c();
-        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility_Name__c=:name];
-        system.debug(mf.Address__c.getStreet());
-        string s = mf.Address__c.getStreet();
-        return s;
+        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility__c.ID=:facID  LIMIT 1];
+        return mf.Address__Street__s;
     }
-    @AuraEnabled(cacheable=true)
-    public static string getCitys(string name){
-        system.debug('city   '+name);
+    public static string getCity(Id facID){
         Medical_Facility__c mf = new Medical_Facility__c();
-        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility_Name__c=:name];
-        system.debug(mf.Address__c.getCity());
-		string s = mf.Address__c.getCity();
-        return s;
+        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility__c.ID=:facID  LIMIT 1];
+        return mf.Address__City__s;
     }
-    @AuraEnabled(cacheable=true)
-    public static string getPostalCodes(string name){
-        system.debug('code   '+name);
+    public static string getPostalCode(Id facID){
         Medical_Facility__c mf = new Medical_Facility__c();
-        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility_Name__c=:name];
-        system.debug(mf.Address__c.getPostalCode());
-		string s = mf.Address__c.getPostalCode();
-        return s;
+        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility__c.ID=:facID  LIMIT 1];
+        return mf.Address__PostalCode__s;
     }
-    @AuraEnabled(cacheable=true)
-    public static string getCountrys(string name){
-        system.debug('country   '+name);
+    public static string getCountry(Id facID){
         Medical_Facility__c mf = new Medical_Facility__c();
-        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility_Name__c=:name];
-        system.debug(mf.Address__c.getCountry());
-		string s = mf.Address__c.getCountry();
-        return s;
+        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility__c.ID=:facID  LIMIT 1]; 
+        return mf.Address__CountryCode__s;
     }
 }
