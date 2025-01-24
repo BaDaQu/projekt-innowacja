@@ -1,23 +1,26 @@
-public class FacilityMapHelper {
+public class FacilityMapHelper { 
     @AuraEnabled(cacheable=true)
-    public static string getStreet(Id facID){
+    public static string getStreets(string name){
         Medical_Facility__c mf = new Medical_Facility__c();
-        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility__c.ID=:facID  LIMIT 1];
-        return mf.Address__Street__s;
+        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility_Name__c=:name];
+        return mf.Address__c.getStreet();
     }
-    public static string getCity(Id facID){
+    @AuraEnabled(cacheable=true)
+    public static string getCitys(string name){
         Medical_Facility__c mf = new Medical_Facility__c();
-        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility__c.ID=:facID  LIMIT 1];
-        return mf.Address__City__s;
+        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility_Name__c=:name];
+        return  mf.Address__c.getCity();
     }
-    public static string getPostalCode(Id facID){
+    @AuraEnabled(cacheable=true)
+    public static string getPostalCodes(string name){
         Medical_Facility__c mf = new Medical_Facility__c();
-        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility__c.ID=:facID  LIMIT 1];
-        return mf.Address__PostalCode__s;
+        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility_Name__c=:name];
+        return mf.Address__c.getPostalCode();
     }
-    public static string getCountry(Id facID){
+    @AuraEnabled(cacheable=true)
+    public static string getCountrys(string name){
         Medical_Facility__c mf = new Medical_Facility__c();
-        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility__c.ID=:facID  LIMIT 1]; 
-        return mf.Address__CountryCode__s;
+        mf = [SELECT Address__c FROM Medical_Facility__c WHERE Medical_Facility_Name__c=:name];
+        return mf.Address__c.getCountry();
     }
 }
