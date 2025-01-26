@@ -1,6 +1,6 @@
 public class FirstAppointmentInternistClass 
 {
-    public static void FirstAppointmentInternist(List<Medical_Appointment__c> appointments) 
+    public static void firstAppointmentInternist(List<Medical_Appointment__c> appointments) 
     {
         Set<Id> patientIds = new Set<Id>();
         for (Medical_Appointment__c app : appointments) {
@@ -16,11 +16,11 @@ public class FirstAppointmentInternistClass
     final Id OnlineR = Schema.SObjectType.Medical_Appointment__c.getRecordTypeInfosByDeveloperName().get('Online').getRecordTypeId();
 
         for (Medical_Appointment__c app : appointments) {
-            if (!all_app_int.containsKey(app.Patient__c)) {
+             if (!all_app_int.containsKey(app.Patient__c) && listint.containsKey(app.Doctor__c) && listint.get(app.Doctor__c).Specialization__c!=null) {
                 if (listint.get(app.Doctor__c).Specialization__c == 'Internist' && app.RecordTypeId == OnlineR) {
                     app.addError('The first appointment to the internist must be on site');
                 }
             }
-        }
+    	}
     }
 }

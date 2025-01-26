@@ -1,31 +1,29 @@
-trigger MedicalAppointmentTrigger on Medical_Appointment__c (before insert, before update, after update, after insert) 
-{
-    MedicalAppointmentTriggerHandler handler = new MedicalAppointmentTriggerHandler();
-    
+trigger MedicalAppointmentTrigger on Medical_Appointment__c (before insert, before update, after insert, after update) 
+{ 
     try
     {
 		if(Trigger.isBefore)
     	{
             if(Trigger.isInsert)
             {
-                handler.beforeInsert(Trigger.new);
+                MedicalAppointmentTriggerHandler.beforeInsert((List<Medical_Appointment__c>) Trigger.new);
             }
             
             if(Trigger.isUpdate)
             {
-                handler.beforeUpdate(Trigger.old, Trigger.new);
+                MedicalAppointmentTriggerHandler.beforeUpdate((Map<Id, Medical_Appointment__c>) Trigger.oldMap, (List<Medical_Appointment__c>) Trigger.new);
             }
     	}
         if(Trigger.isAfter)
         {
             if(Trigger.isInsert)
             {
-                handler.afterInsert(Trigger.new);
+                MedicalAppointmentTriggerHandler.afterInsert((List<Medical_Appointment__c>)Trigger.new);
             }
             
             if(Trigger.isUpdate)
             {
-                handler.afterUpdate(Trigger.new);
+                MedicalAppointmentTriggerHandler.afterUpdate((Map<Id, Medical_Appointment__c>) Trigger.oldMap, (List<Medical_Appointment__c>) Trigger.new);
             }
         }
     }
