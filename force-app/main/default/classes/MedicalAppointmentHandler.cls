@@ -86,4 +86,5 @@ public class MedicalAppointmentHandler {
 
         return emailsToSend;
     }
+
 }
