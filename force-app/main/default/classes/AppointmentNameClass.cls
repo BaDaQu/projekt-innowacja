@@ -1,7 +1,10 @@
 public class AppointmentNameClass 
 {
-    public static void AppointmentName(List<Medical_Appointment__c> appointments) 
+    public static void appointmentName(Map<Id, Medical_Appointment__c> oldMapAppointments, List<Medical_Appointment__c> newAppointments) 
     {
+        List<Medical_Appointment__c> appointments = (oldMapAppointments != null && !oldMapAppointments.isEmpty()) ? 
+            										getChangedRecords(oldMapAppointments, newAppointments) : newAppointments;
+        
         Set<Id> facilityIds = new Set<Id>();
         Set<Id> personIds = new Set<Id>();
         for (Medical_Appointment__c m : appointments) {
@@ -32,4 +35,20 @@ public class AppointmentNameClass
                 '[' + personMap.get(m.Patient__c).LastName__c + ']-' + '[' + m.Appointment_Time__c.format('dd-MM-yyyy') + ']';
         }
     }
+    
+    private static List<Medical_Appointment__c> getChangedRecords(Map<Id, Medical_Appointment__c> oldMapAppointments, List<Medical_Appointment__c> newAppointments)
+	{
+		List<Medical_Appointment__c> changedRecords = new List<Medical_Appointment__c>();
+        for(Medical_Appointment__c appointment : newAppointments)
+        {
+            Medical_Appointment__c oldAppointment = oldMapAppointments.get(appointment.Id);
+            if(appointment.Appointment_Time__c != oldAppointment.Appointment_Time__c ||
+               appointment.Medical_Facility__c != oldAppointment.Medical_Facility__c ||
+               appointment.Patient__c != oldAppointment.Patient__c)
+            {
+                changedRecords.add(appointment);
+            }
+        }
+        return changedRecords;
+	}
 }

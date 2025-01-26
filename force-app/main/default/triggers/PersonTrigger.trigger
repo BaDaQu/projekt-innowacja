@@ -1,19 +1,17 @@
 trigger PersonTrigger on Person__c (before insert, before update) 
-{
-    PersonTriggerHandler handler = new PersonTriggerHandler();
-    
+{   
     try
     {
 		if(Trigger.isBefore)
     	{
             if(Trigger.isInsert)
             {
-                handler.beforeInsert(Trigger.new);
+                PersonTriggerHandler.beforeInsert((List<Person__c>) Trigger.new);
             }
             
             if(Trigger.isUpdate)
             {
-                handler.beforeUpdate(Trigger.old, Trigger.new);
+                PersonTriggerHandler.beforeUpdate((Map<Id, Person__c>)Trigger.oldMap, (List<Person__c>) Trigger.new);
             }
     	}
     }
