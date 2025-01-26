@@ -41,43 +41,107 @@ public class MedicalFacilitiesAPI implements Schedulable
             facility.Address__City__s = facilityInstance.Address.City;
             facility.External_Id__c = facilityInstance.Id;
             
-            String openingHoursInstance = parseOpeningHours(facilityInstance);
-            if(openingHoursInstance != null)
-            {
-                facility.Opening_Hours__c = openingHoursInstance;
-            }
-            
             facilities.add(facility); 
         }
         
-        Database.UpsertResult[] result = Database.upsert(facilities, Medical_Facility__c.Fields.External_Id__c, false);
+        Database.UpsertResult[] upsertResult = Database.upsert(facilities, Medical_Facility__c.Fields.External_Id__c, false);
         
-        for(Integer i = 0; i < result.size(); i++)
+        Set<Id> facilitiesIds = new Set<Id>();
+        
+        for(Integer i = 0; i < upsertResult.size(); i++)
         {
-            if(!result[i].isSuccess())
+            if(!upsertResult[i].isSuccess())
             {
-                System.debug('Nie udało się upsertować rekordu: ' + facilities[i]);
-                System.debug('Błąd: ' + result[i].getErrors()[0].getMessage());
+                System.debug('Failed to upsert Medical_Facility__c record: ' + facilities[i]);
+                System.debug('Error: ' + upsertResult[i].getErrors()[0].getMessage());
+                facilityInstances.remove(i);
+                facilities.remove(i);
+            }
+            else if(facilityInstances[i].OpeningHours != null)
+            {
+                facilitiesIds.add(upsertResult[i].getId());
+            }
+        }
+        
+        clearOpeningHours(facilitiesIds);
+        
+        List<Facility_Hours__c> facilityHours = parseOpeningHours(facilityInstances, facilities);
+        
+        Database.SaveResult[] insertResult = Database.insert(facilityHours, false);
+        
+        for(Integer i = 0; i < insertResult.size(); i++)
+        {
+            if(!insertResult[i].isSuccess())
+            {
+                System.debug('Failed to insert Facility_Hours__c record: ' + facilityHours[i]);
+                System.debug('Error: ' + insertResult[i].getErrors()[0].getMessage());
             }
         }
         
     }
     
-    public static String parseOpeningHours(MedicalFacilityClass facilityInstance)
+    public static void clearOpeningHours(Set<Id> facilitiesIds)
     {
-        if(facilityInstance.OpeningHours != null)
+        List<Facility_Hours__c> facilityHoursRecords = [SELECT Id FROM Facility_Hours__c WHERE Medical_Facility__c IN :facilitiesIds];
+        
+        List<Id> facilityHoursToDelete = new List<Id>();
+        
+        for(Facility_Hours__c facilityHours : facilityHoursRecords)
         {
-            String openingHoursInstance = '';
-            for(String day : facilityInstance.OpeningHours.keySet())
-            {
-                String hours = facilityInstance.OpeningHours.get(day);
-                openingHoursInstance += day + ': ' + hours + '\n';
-            }
-            
-            return openingHoursInstance;
+            facilityHoursToDelete.add(facilityHours.Id);
         }
         
-        return null;
+        Database.DeleteResult[] deleteResult = Database.delete(facilityHoursToDelete, false);
+        
+        for(Integer i = 0; i < deleteResult.size(); i++)
+        {
+			if(!deleteResult[i].isSuccess())
+            {
+                System.debug('Failed to delete Facility_Hours__c record: ' + facilityHoursRecords[i]);
+                System.debug('Error: ' + deleteResult[i].getErrors()[0].getMessage());
+            }
+        }
+    }
+    
+    public static List<Facility_Hours__c> parseOpeningHours(List<MedicalFacilityClass> facilityInstances, List<Medical_Facility__c> facilities)
+    {
+        List<Facility_Hours__c> facilityHoursList = new List<Facility_Hours__c>();
+        
+        for(Integer i = 0; i < facilityInstances.size(); i++)
+        {
+            if(facilityInstances[i].OpeningHours != null)
+            {
+                for(String day : facilityInstances[i].OpeningHours.keySet())
+                {
+                    Facility_Hours__c facilityHoursInstance = new Facility_Hours__c();
+                    String hoursUnparsed = facilityInstances[i].OpeningHours.get(day);
+                    List<String> hoursList = hoursUnparsed.split('-');
+                    facilityHoursInstance.Day_of_Week__c = day;
+					facilityHoursInstance.Opening_Time__c = parseTime(hoursList[0].trim());
+                    facilityHoursInstance.Closing_Time__c = parseTime(hoursList[1].trim());
+                    facilityHoursInstance.Medical_Facility__c = facilities[i].Id;
+                    
+                    facilityHoursList.add(facilityHoursInstance);
+                }
+                
+            }
+        }
+        
+        return facilityHoursList;
+    }
+    
+    public static Time parseTime(String hoursString)
+    {
+        List<String> openingTimeParts = hoursString.split(':');
+		Time timeValue = Time.newInstance
+		(
+			Integer.valueOf(openingTimeParts[0]),
+			Integer.valueOf(openingTimeParts[1]),
+			0,
+			0
+		);
+        
+        return timeValue;
     }
     
     public class MedicalFacilityClass
