@@ -759,19 +759,9 @@
         <field>Medical_Facility__c.Opening_Hours__c</field>
         <readable>true</readable>
     </fieldPermissions>
-       <fieldPermissions>
-        <editable>true</editable>
-        <field>Facility_Hours__c.Additional_Information__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Facility_Hours__c.Closing_Time__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Facility_Hours__c.Is_Open__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
